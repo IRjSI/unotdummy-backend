@@ -35,11 +35,13 @@ export const createUserAccount = catchAsync(async (req, res) => {
 
     return res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
+      secure: true,
       maxAge: 24*60*60*1000
     }).cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
+      secure: true,
     }).json({
       message: "user signed up",
       status: 200,
@@ -86,11 +88,13 @@ export const authenticateUser = catchAsync(async (req, res) => {
   
   return res.cookie("token", token, {
     httpOnly: true,
-    sameSite: "strict",
+    sameSite: "none",
+    secure: true,
     maxAge: 24*60*60*1000
   }).cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    sameSite: "strict",
+    sameSite: "none",
+    secure: true,
   }).json({
     message: "user logged in",
     status: 200,
@@ -163,11 +167,13 @@ export const googleLogin = catchAsync(async (req,res) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    sameSite: "strict",
+    sameSite: "none",
+    secure: true,
     maxAge: 24*60*60*1000
   }).cookie("refreshToken", refreshToken,  {
     httpOnly: true,
-    sameSite: "strict"
+    sameSite: "none",
+    secure: true,
   }).json({
     message: "user logged in",
     status: 200,
